@@ -1,0 +1,15 @@
+{
+  "author": {
+    "email": "dominik@wachter.biz",
+    "name": "Dominik Wachter",
+    "url": "https://wachter.biz"
+  },
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.5"
+  },
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "name": "kayleen-vue-auth0-client",
+  "private": true,
+  "version": "0.1.0"
+}
