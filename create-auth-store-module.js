@@ -33,6 +33,8 @@ export default settings => {
         }
       },
       async signIn({ getters }, payload) {
+        if (!payload) payload = {}
+
         const path = payload.redirectPath || document.location.pathname + (document.location.search || '') + (document.location.hash || '')
 
         sessionStorage.setItem('auth_redirect_path', path)
