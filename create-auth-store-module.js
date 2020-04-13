@@ -3,7 +3,7 @@ import createAuth0Client from '@auth0/auth0-spa-js'
 export default settings => {
   return {
     actions: {
-      check({ getters }, payload) {
+      async check({ getters }, payload) {
         return payload.auth(getters)
       },
       async performRequest({ commit, getters }) {

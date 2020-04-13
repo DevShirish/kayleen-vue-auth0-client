@@ -7,7 +7,7 @@ export default store => {
       return
     }
 
-    const authorized = store.dispatch('auth/check', { auth: to.meta.auth })
+    const authorized = await store.dispatch('auth/check', { auth: to.meta.auth })
 
     if (authorized) {
       next()
