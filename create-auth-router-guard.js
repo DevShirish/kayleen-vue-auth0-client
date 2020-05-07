@@ -4,6 +4,7 @@ export default store => {
 
     if (!to.meta.auth) {
       next()
+
       return
     }
 

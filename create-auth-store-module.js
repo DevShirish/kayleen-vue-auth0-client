@@ -14,7 +14,8 @@ export default settings => {
             audience: settings.audience,
             client_id: settings.clientId,
             domain: settings.domain,
-            redirect_uri: settings.signInCallbackUrl
+            redirect_uri: settings.signInCallbackUrl,
+            scope: settings.scope
           })
 
           commit('setAuth0', { auth0 })
@@ -33,9 +34,7 @@ export default settings => {
         }
       },
       async signIn({ getters }, payload) {
-        if (!payload) payload = {}
-
-        const path = payload.redirectPath || document.location.pathname + (document.location.search || '') + (document.location.hash || '')
+        const path = (payload || {}).redirectPath || document.location.pathname + (document.location.search || '') + (document.location.hash || '')
 
         sessionStorage.setItem('auth_redirect_path', path)
 
