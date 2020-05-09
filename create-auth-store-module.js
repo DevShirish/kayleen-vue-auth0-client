@@ -3,13 +3,13 @@ import createAuth0Client from '@auth0/auth0-spa-js'
 export default settings => {
   return {
     actions: {
-      async check({ getters }, payload) {
-        return payload.auth(getters)
+      async check({ getters }, { auth }) {
+        return auth(getters)
       },
       async performRequest({ commit, getters }) {
         let auth0 = getters.auth0
 
-        if (auth0 == null) {
+        if (!auth0) {
           auth0 = await createAuth0Client({
             audience: settings.audience,
             client_id: settings.clientId,
@@ -83,17 +83,17 @@ export default settings => {
       user: state => state.user
     },
     mutations: {
-      setAccessToken(state, payload) {
-        state.accessToken = payload.accessToken
+      setAccessToken(state, { accessToken }) {
+        state.accessToken = accessToken
       },
-      setAuth0(state, payload) {
-        state.auth0 = payload.auth0
+      setAuth0(state, { auth0 }) {
+        state.auth0 = auth0
       },
-      setIsAuthenticated(state, payload) {
-        state.isAuthenticated = payload.isAuthenticated
+      setIsAuthenticated(state, { isAuthenticated }) {
+        state.isAuthenticated = isAuthenticated
       },
-      setUser(state, payload) {
-        state.user = payload.user
+      setUser(state, { user }) {
+        state.user = user
       }
     },
     namespaced: true,
