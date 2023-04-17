@@ -5,7 +5,7 @@
     "url": "https://wachter.biz"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.6.5"
+    "@auth0/auth0-spa-js": "^2.0.4"
   },
   "license": "UNLICENSED",
   "main": "index.js",
