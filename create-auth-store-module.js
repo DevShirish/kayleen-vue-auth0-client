@@ -66,7 +66,7 @@ export default settings => {
       hasPermission: state => permission => {
         if (!state.user || !state.user[`${settings.namespace}/permissions`]) return false
 
-        return state.user[`${settings.namespace}/permissions`].includes(role)
+        return state.user[`${settings.namespace}/permissions`].includes(permission)
       },
       hasRole: state => role => {
         if (!state.user || !state.user[`${settings.namespace}/roles`]) return false
