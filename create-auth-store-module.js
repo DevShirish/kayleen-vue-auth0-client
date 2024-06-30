@@ -38,7 +38,7 @@ export default settings => {
 
         sessionStorage.setItem('auth_redirect_path', path)
 
-        await getters.auth0.loginWithRedirect()
+        await getters.auth0[settings.loginWith ? settings.loginWith : 'loginWithRedirect']()
       },
       async signInCallback({ getters }) {
         await getters.auth0.handleRedirectCallback()
