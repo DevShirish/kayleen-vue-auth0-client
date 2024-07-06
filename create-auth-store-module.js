@@ -39,7 +39,8 @@ export default settings => {
         sessionStorage.setItem('auth_redirect_path', path)
 
         await getters.auth0[payload.popup ? 'loginWithPopup' : 'loginWithRedirect']({}, {
-          popup: payload.popup
+          popup: payload.popup,
+          openUrl: payload.openUrl
         })
       },
       async signInCallback({ getters }) {
