@@ -11,11 +11,13 @@ export default settings => {
 
         if (!auth0) {
           auth0 = await createAuth0Client({
-            audience: settings.audience,
-            client_id: settings.clientId,
+            clientId: settings.clientId,
             domain: settings.domain,
-            redirect_uri: settings.signInCallbackUrl,
-            scope: settings.scope
+            authorizationParams: {
+              redirect_uri: settings.signInCallbackUrl,
+              audience: settings.audience,
+              scope: settings.scope
+            }
           })
 
           commit('setAuth0', { auth0 })
@@ -38,9 +40,8 @@ export default settings => {
 
         sessionStorage.setItem('auth_redirect_path', path)
 
-        await getters.auth0[payload.popup ? 'loginWithPopup' : 'loginWithRedirect']({}, {
-          popup: payload.popup,
-          openUrl: payload.openUrl
+        await getters.auth0.loginWithRedirect({
+          openUrl: payload.openUrl || settings.openUrl
         })
       },
       async signInCallback({ getters }) {
